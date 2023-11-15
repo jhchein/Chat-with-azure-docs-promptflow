@@ -1,0 +1,11 @@
+{
+  "name": "Azure Bicep Development",
+  "dockerFile": "Dockerfile",
+  "forwardPorts": [],
+  // "postCreateCommand": "az login --use-device-code",
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  }
+}

@@ -1,0 +1,29 @@
+name: Sync with Azure Storage
+on:
+  push:
+  repository_dispatch:
+  schedule:
+    - cron: "0 0 * * 0" # This will run the workflow every Sunday at midnight
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Sync files
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.0.72
+          inlineScript: |
+            az storage blob sync --account-name ${{ secrets.STORAGE_ACCOUNT_NAME }} --source . --container ${{ secrets.CONTAINER_NAME }}
+
+      - name: Logout of Azure
+        run: |
+          az logout
