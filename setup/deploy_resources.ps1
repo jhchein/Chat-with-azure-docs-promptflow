@@ -1,10 +1,11 @@
 # Define parameters
+$tenantId = "<your-tenant-id>" # UPDATE THIS VALUE!
 $subscritionName = "<your-subscription-name>" # UPDATE THIS VALUE!
 $location = "<select-a-location>" # UPDATE THIS VALUE!
 $resourceGroupName = "chat-with-azure-docs-rg"
 
 # Login to Azure
-az login --output none
+az login --use-device-code --tenant $tenantId --output none
 
 # Select the subscription
 az account set --subscription $subscritionName
