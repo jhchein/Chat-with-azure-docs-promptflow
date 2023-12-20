@@ -1,0 +1,8 @@
+azure-mgmt-resource
+azure-mgmt-storage
+azure-storage-blob
+azure-identity
+tqdm
+azure-search-documents --pre
+openai 
+python-dotenv
